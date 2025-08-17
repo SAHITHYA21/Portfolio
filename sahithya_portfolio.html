@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahithya Arveti Nagaraju - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #141414;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 60px 0 40px;
+            background: linear-gradient(135deg, #e50914 0%, #221f1f 100%);
+            border-radius: 8px;
+            margin-bottom: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #e50914 0%, #831010 100%);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            font-weight: bold;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: white;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            background: rgba(229, 9, 20, 0.8);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-links a:hover {
+            background: #e50914;
+            transform: translateY(-2px);
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            background: #000000;
+            padding: 0;
+            border-radius: 0 0 8px 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #333;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: #b3b3b3;
+            padding: 20px 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            font-family: inherit;
+        }
+
+        .tab-btn:hover {
+            color: #ffffff;
+            background: rgba(229, 9, 20, 0.1);
+        }
+
+        .tab-btn.active {
+            color: #e50914;
+            background: rgba(229, 9, 20, 0.1);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #e50914;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .section h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: #e50914;
+            display: block;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            font-size: 1.1em;
+            text-align: center;
+            color: #b3b3b3;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: #262626;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #e50914;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: #2a2a2a;
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .skill-category p {
+            color: #b3b3b3;
+            font-size: 0.95em;
+        }
+
+        /* What I'm Doing */
+        .doing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .doing-item {
+            background: #262626;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .doing-item:hover {
+            transform: translateY(-5px);
+            border-color: #e50914;
+            background: #2a2a2a;
+        }
+
+        .doing-item i {
+            font-size: 3em;
+            color: #e50914;
+            margin-bottom: 20px;
+        }
+
+        .doing-item h3 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .doing-item p {
+            color: #b3b3b3;
+            font-size: 0.95em;
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e50914;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            background: #262626;
+            padding: 25px;
+            border-radius: 8px;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            background: #2a2a2a;
+            transform: translateX(5px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e50914;
+            border: 3px solid #1a1a1a;
+        }
+
+        .timeline-item h3 {
+            color: #ffffff;
+            font-size: 1.4em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .timeline-item .company {
+            color: #e50914;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .timeline-item .duration {
+            color: #b3b3b3;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-item ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: #b3b3b3;
+        }
+
+        .timeline-item ul li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #e50914;
+            font-size: 0.8em;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: #262626;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #e50914;
+            box-shadow: 0 12px 24px rgba(229, 9, 20, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e50914, #831010);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image i {
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-card h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .project-tech {
+            color: #e50914;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .project-card p {
+            color: #b3b3b3;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #e50914;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #ff1e2d;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .education-item {
+            background: #262626;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #e50914;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            background: #2a2a2a;
+            transform: translateY(-5px);
+        }
+
+        .education-item h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .education-item .school {
+            color: #e50914;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .education-item .duration {
+            color: #b3b3b3;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .education-item .gpa {
+            background: #e50914;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        /* Awards Section */
+        .awards-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .awards-list li {
+            background: #262626;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #e50914;
+            position: relative;
+            padding-left: 70px;
+            transition: all 0.3s ease;
+        }
+
+        .awards-list li:hover {
+            background: #2a2a2a;
+            transform: translateX(5px);
+        }
+
+        .awards-list li::before {
+            content: '🏆';
+            position: absolute;
+            left: 25px;
+            top: 25px;
+            font-size: 1.8em;
+        }
+
+        .awards-list li strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .awards-list li span {
+            color: #b3b3b3;
+            font-size: 0.95em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .section h2 {
+                font-size: 2em;
+            }
+
+            .tab-buttons {
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+
+            .tab-btn {
+                white-space: nowrap;
+                padding: 15px 20px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills-grid,
+            .doing-grid,
+            .projects-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-timeline {
+                padding-left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <div class="profile-img">SA</div>
+                <h1>Sahithya Arveti Nagaraju</h1>
+                <p>Data Scientist | Software Engineer | ML Enthusiast</p>
+                <div class="contact-links">
+                    <a href="tel:716-247-7348"><i class="fas fa-phone"></i> (716) 247-7348</a>
+                    <a href="mailto:sahithyaarvetinagaraju@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://linkedin.com/in/sahithya-portfolio" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://github.com/SAHITHYA21" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tab-navigation">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="about">About</button>
+                <button class="tab-btn" data-tab="skills">Skills</button>
+                <button class="tab-btn" data-tab="doing">What I Do</button>
+                <button class="tab-btn" data-tab="education">Education</button>
+                <button class="tab-btn" data-tab="experience">Experience</button>
+                <button class="tab-btn" data-tab="projects">Projects</button>
+                <button class="tab-btn" data-tab="awards">Awards</button>
+            </div>
+        </nav>
+
+        <!-- About Tab -->
+        <div class="tab-content active" id="about">
+            <section class="section">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <p>Hello there, I'm Sahithya!</p>
+                    <p>I'm currently pursuing my Master's in Data Science at the University at Buffalo, where I maintain a perfect 3.97 GPA. With over 3 years of professional experience as a Software Engineer at Sabre, I specialize in cloud-native solutions, machine learning, and data engineering.</p>
+                    <p>My passion lies in transforming complex data into actionable insights and building scalable systems that solve real-world problems. I thrive on merging cutting-edge AI/ML technologies with robust software engineering practices to create innovative solutions in the tech sphere.</p>
+                    <p>When I'm not immersed in code or data, I enjoy exploring new technologies, contributing to open-source projects, and continuously learning about the latest advancements in artificial intelligence and cloud computing.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Skills Tab -->
+        <div class="tab-content" id="skills">
+            <section class="section">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                        <p>Java, Python, R, HTML, CSS, JavaScript, Shell Scripting, C++, Data Structures, Algorithms, Object-oriented design</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i> Database Management</h3>
+                        <p>MongoDB (NoSQL), PostgreSQL, MySQL, Hadoop, PySpark, Databricks, SQLite3</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-robot"></i> Machine Learning</h3>
+                        <p>NumPy, Pandas, Matplotlib, scikit-learn, TensorFlow, PyTorch, LangChain, LLM</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                        <p>GCP, AWS, Kubernetes, Docker, Jenkins, Terraform, Linux, Unix</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-bar"></i> Data Visualization</h3>
+                        <p>Google Analytics, Tableau, Power BI, AppDynamics, Splunk, Grafana</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                        <p>Excel, GitHub, Jira, ServiceNow, ElasticSearch, MLFlow, Streamlit</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- What I Do Tab -->
+        <div class="tab-content" id="doing">
+            <section class="section">
+                <h2>What I'm Doing</h2>
+                <div class="doing-grid">
+                    <div class="doing-item">
+                        <i class="fas fa-brain"></i>
+                        <h3>Machine Learning & AI</h3>
+                        <p>Developing intelligent systems using advanced ML algorithms, neural networks, and deep learning techniques for predictive analytics and automation.</p>
+                    </div>
+                    <div class="doing-item">
+                        <i class="fas fa-cloud"></i>
+                        <h3>Cloud Architecture</h3>
+                        <p>Designing and implementing scalable cloud-native solutions using AWS, GCP, Docker, and Kubernetes for enterprise-level applications.</p>
+                    </div>
+                    <div class="doing-item">
+                        <i class="fas fa-database"></i>
+                        <h3>Data Engineering</h3>
+                        <p>Building robust ETL pipelines, data warehouses, and real-time analytics systems to handle large-scale data processing and insights.</p>
+                    </div>
+                    <div class="doing-item">
+                        <i class="fas fa-code"></i>
+                        <h3>Full-Stack Development</h3>
+                        <p>Creating end-to-end applications with modern frameworks, RESTful APIs, and responsive user interfaces for seamless user experiences.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Education Tab -->
+        <div class="tab-content" id="education">
+            <section class="section">
+                <h2>Education</h2>
+                <div class="education-grid">
+                    <div class="education-item">
+                        <h3>Master of Science in Data Science</h3>
+                        <div class="school">University at Buffalo</div>
+                        <div class="duration">Jan. 2024 – May 2025 | Buffalo, New York</div>
+                        <div class="gpa">GPA: 3.97/4.00</div>
+                    </div>
+                    <div class="education-item">
+                        <h3>Bachelor of Science in Information Science and Engineering</h3>
+                        <div class="school">Siddaganga Institute of Technology</div>
+                        <div class="duration">Aug. 2017 – Jun. 2021 | India</div>
+                        <div class="gpa">CGPA: 4.00/4.00</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Experience Tab -->
+        <div class="tab-content" id="experience">
+            <section class="section">
+                <h2>Professional Experience</h2>
+                <div class="experience-timeline">
+                    <div class="timeline-item">
+                        <h3>Graduate Teaching Assistant</h3>
+                        <div class="company">University at Buffalo</div>
+                        <div class="duration">Jan 2025 - May 2025 | Buffalo, NY, United States</div>
+                        <ul>
+                            <li>Collaborated with Professor Khinkis on refining lecture materials for advanced statistical methods and data mining, improving student comprehension scores by 15%</li>
+                            <li>Supported 78 students in understanding Clustering, PCA and Time Series analysis, providing timely feedback on assignments and projects</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h3>Software Engineer II</h3>
+                        <div class="company">Sabre</div>
+                        <div class="duration">Aug 2021 – Jan 2024 | Bengaluru, India</div>
+                        <ul>
+                            <li>Migrated GetThere Java microservices from legacy web servers to cloud using Terraform, Docker, and Kubernetes, cutting infrastructure costs by 22%</li>
+                            <li>Built and maintained REST APIs for backend services supporting booking and transaction workflows across distributed systems</li>
+                            <li>Led endpoint migrations for Oracle and Nexus in production environment with zero-downtime strategy, achieving 100% service continuity</li>
+                            <li>Managed production deployments on Linux VMs using Git, resolving 95% of incidents within SLA through effective root cause analysis</li>
+                            <li>Automated infrastructure management using Python, Shell scripting and Ansible playbooks</li>
+                            <li>Monitored server health across 150+ nodes using Grafana, Cloudwatch, AppDynamics, and Splunk with 24/7 oncall support</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h3>Software Engineer</h3>
+                        <div class="company">Sabre</div>
+                        <div class="duration">Jan 2021 – July 2021 | Bengaluru, India</div>
+                        <ul>
+                            <li>Created ServiceNow API application using Python (Flask) and Jenkins, reducing manual processing time by 60%</li>
+                            <li>Designed Tableau dashboards to track server sessions and booking counts for deployment validation</li>
+                            <li>Optimized MySQL query performance by 20% through data cleaning and transformation</li>
+                            <li>Built automated ETL pipelines increasing data refresh efficiency by 40%</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h3>Research Intern</h3>
+                        <div class="company">Samsung PRISM</div>
+                        <div class="duration">Aug 2020 - Aug 2021 | India</div>
+                        <ul>
+                            <li>Designed LSTM-based neural machine translation model for Hindi to English conversion using TensorFlow and Keras</li>
+                            <li>Achieved BLEU score of 0.97 through advanced preprocessing and hyperparameter tuning</li>
+                            <li>Created data pipelines reducing preprocessing time by 35%</li>
+                            <li>Co-authored research published in International Journal of Intelligent Systems and Applications in Engineering (IJISAE)</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-item">
+                        <h3>Intern</h3>
+                        <div class="company">Center for System Design</div>
+                        <div class="duration">May 2019 - Jul 2019 | India</div>
+                        <ul>
+                            <li>Engineered interactive simulation tool for asymmetric roof trusses using React, HTML, CSS, and JavaScript</li>
+                            <li>Enabled real-time adjustment of structural parameters with dynamic visualization</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Projects Tab -->
+        <div class="tab-content" id="projects">
+            <section class="section">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card" onclick="window.open('https://github.com/SAHITHYA21/AI-Cover-Letter-Generator', '_blank')">
+                        <div class="project-image">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>AI-Powered Cover Letter Generator</h3>
+                            <div class="project-tech">Python, LLM, Streamlit, LangChain, ChromaDB, Web Scraping</div>
+                            <p>Built a Streamlit application that scrapes job postings and generates tailored cover letters using ChromaDB and LangChain, reducing manual customization time by 80%.</p>
+                            <a href="https://github.com/SAHITHYA21/AI-Cover-Letter-Generator" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="window.open('https://github.com/SAHITHYA21/Earthquake-Data-Pipeline', '_blank')">
+                        <div class="project-image">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Earthquake Data Engineering Pipeline</h3>
+                            <div class="project-tech">Python, PySpark, Microsoft Fabric, Power BI</div>
+                            <p>Developed a Microsoft Fabric pipeline processing 1M+ earthquake events using Bronze-Silver-Gold architecture, reducing data preparation time by 40% and improving reporting speed by 50%.</p>
+                            <a href="https://github.com/SAHITHYA21/Earthquake-Data-Pipeline" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="window.open('https://github.com/SAHITHYA21/AI-Music-Time-Machine', '_blank')">
+                        <div class="project-image">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>AI Music Time Machine</h3>
+                            <div class="project-tech">Python, Streamlit, PyTorch, torchaudio, Meta MusicGen</div>
+                            <p>Created an interactive AI music generation app using Meta's MusicGen model to transform lyrics into music across various decade-inspired styles with real-time audio processing.</p>
+                            <a href="https://github.com/SAHITHYA21/AI-Music-Time-Machine" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="window.open('https://github.com/SAHITHYA21/Cloud-ETL-Pipeline', '_blank')">
+                        <div class="project-image">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Cloud-Native ETL Pipeline</h3>
+                            <div class="project-tech">Databricks, Snowflake, Airflow, Python, Docker, SQL</div>
+                            <p>Built automated ETL pipeline using Snowflake's TPC-H dataset with dbt models and Apache Airflow DAGs, implementing rigorous data quality validation.</p>
+                            <a href="https://github.com/SAHITHYA21/Cloud-ETL-Pipeline" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="window.open('https://github.com/SAHITHYA21/Real-Estate-Price-Prediction', '_blank')">
+                        <div class="project-image">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Real Estate Price Prediction</h3>
+                            <div class="project-tech">Python, SQLite3, scikit-learn, MLFlow, Docker, Streamlit</div>
+                            <p>Developed end-to-end regression pipeline using multiple ML models, containerized with Docker and deployed on Digital Ocean with Streamlit interface.</p>
+                            <a href="https://github.com/SAHITHYA21/Real-Estate-Price-Prediction" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="window.open('https://github.com/SAHITHYA21/Diabetes-Risk-Prediction', '_blank')">
+                        <div class="project-image">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Diabetes Risk Prediction System</h3>
+                            <div class="project-tech">Python, PySpark, MLlib, XGBoost</div>
+                            <p>Created distributed ML workflow with PySpark MLlib for large medical datasets, achieving 8% performance improvement and 40% execution time reduction.</p>
+                            <a href="https://github.com/SAHITHYA21/Diabetes-Risk-Prediction" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="window.open('https://github.com/SAHITHYA21/Online-Shopping-System', '_blank')">
+                        <div class="project-image">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Online Shopping System</h3>
+                            <div class="project-tech">Python, MySQL, pandas, Faker</div>
+                            <p>Designed and deployed a scalable e-commerce relational database schema supporting 3,500+ users with <4ms query performance using optimized indexes and stored procedures.</p>
+                            <a href="https://github.com/SAHITHYA21/Online-Shopping-System" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" onclick="window.open('https://github.com/SAHITHYA21/Roof-Truss-Simulator', '_blank')">
+                        <div class="project-image">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3>Interactive Roof Truss Simulator</h3>
+                            <div class="project-tech">React, HTML, CSS, JavaScript</div>
+                            <p>Engineered an interactive simulation tool for asymmetric roof trusses with real-time parameter adjustment and dynamic visualization to enhance understanding of design impacts.</p>
+                            <a href="https://github.com/SAHITHYA21/Roof-Truss-Simulator" class="project-link" target="_blank">View on GitHub <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Awards Tab -->
+        <div class="tab-content" id="awards">
+            <section class="section">
+                <h2>Awards & Certifications</h2>
+                <ul class="awards-list">
+                    <li>
+                        <strong>"Say Thanks" Award - Sabre</strong>
+                        <span>Recognized for demonstrating passion and accountability on high-impact projects</span>
+                    </li>
+                    <li>
+                        <strong>Code!t Competition Winner - Sabre</strong>
+                        <span>Won internal coding competition for outstanding problem-solving and coding skills</span>
+                    </li>
+                    <li>
+                        <strong>Professional Certifications</strong>
+                        <span>Completed Coursera certifications in Jenkins, Google Cloud Platform, Google Compute Engine, and Kubernetes fundamentals</span>
+                    </li>
+                    <li>
+                        <strong>Research Publication</strong>
+                        <span>Co-authored research in the International Journal of Intelligent Systems and Applications in Engineering (IJISAE) on neural machine translation</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+
+                    // Add active class to clicked tab and corresponding content
+                    btn.classList.add('active');
+                    const targetTab = btn.getAttribute('data-tab');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+
+            // Smooth hover effects for project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Enhanced hover effects for other elements
+            document.querySelectorAll('.doing-item, .skill-category, .education-item, .timeline-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Add typing effect to header (Netflix-style)
+            const headerText = document.querySelector('.header h1');
+            if (headerText) {
+                const text = headerText.textContent;
+                headerText.textContent = '';
+                headerText.style.borderRight = '2px solid #e50914';
+                
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        headerText.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 80);
+                    } else {
+                        setTimeout(() => {
+                            headerText.style.borderRight = 'none';
+                        }, 1000);
+                    }
+                };
+                
+                setTimeout(typeWriter, 500);
+            }
+
+            // Add Netflix-style loading animation for project images
+            document.querySelectorAll('.project-image').forEach((img, index) => {
+                img.style.opacity = '0';
+                img.style.transform = 'scale(0.8)';
+                
+                setTimeout(() => {
+                    img.style.transition = 'all 0.5s ease';
+                    img.style.opacity = '1';
+                    img.style.transform = 'scale(1)';
+                }, index * 100);
+            });
+
+            // Add pulse effect to contact links
+            document.querySelectorAll('.contact-links a').forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.animation = 'pulse 0.6s';
+                });
+                
+                link.addEventListener('animationend', function() {
+                    this.style.animation = '';
+                });
+            });
+        });
+
+        // Add CSS animation for pulse effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
